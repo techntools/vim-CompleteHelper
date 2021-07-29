@@ -124,7 +124,7 @@ if exists('*win_execute')
 	    if l:bufNr != l:originalBufNr &&
 	    \   ! has_key(a:alreadySearchedBuffers, l:bufNr) &&
 	    \   s:ShouldBeSearched(a:options, l:bufNr)
-		let l:matchTemplate = {'menu': bufname(l:bufNr)}
+		let l:matchTemplate = {}
 		call win_execute(win_getid(l:winNr), 'noautocmd call s:FindInCurrentWindow(a:alreadySearchedBuffers, a:matches, a:Funcref, l:matchTemplate, a:options, 0)')
 	    endif
 	endfor
@@ -165,7 +165,7 @@ else
 		\   s:ShouldBeSearched(a:options, l:bufNr)
 		    execute 'noautocmd' l:winNr . 'wincmd w'
 
-		    let l:matchTemplate = {'menu': bufname('')}
+		    let l:matchTemplate = {}
 		    noautocmd call s:FindInCurrentWindow(a:alreadySearchedBuffers, a:matches, a:Funcref, l:matchTemplate, a:options, 0)
 		endif
 	    endfor
@@ -245,14 +245,14 @@ function! s:FindInOtherBuffers( alreadySearchedBuffers, matches, Funcref, option
 		continue
 	    endif
 
-	    let l:matchTemplate = {'menu': bufname(l:bufNr)}
+	    let l:matchTemplate = {}
 
 	    " We need to get all lines at once; there is no other way to remotely
 	    " determine the number of lines in the other buffer.
 	    call call(a:Funcref, [s:GetBufferLines(l:bufNr), a:matches, l:matchTemplate, a:options, 0])
 	else
 	    " Also handle filespecs passed via a:options.filespecs.
-	    let l:matchTemplate = {'menu': fnamemodify(l:bufNr, ':t')}
+	    let l:matchTemplate = {}
 
 	    call call(a:Funcref, [ingo#file#GetLines(l:bufNr), a:matches, l:matchTemplate, a:options, 0])
 	endif
