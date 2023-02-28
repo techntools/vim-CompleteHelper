@@ -42,6 +42,8 @@ The following custom completions use this plugin:
   Completes whole lines from designated files or buffers.
 - |InnerFragmentComplete.vim| (vimscript #4804):
   Completes (and expands CamelCaseWord) fragments inside words.
+- |KeywordPlusOneComplete.vim| (vimscript #0000):
+  Completes a sequence of keyword and one non-keyword character.
 - |LineComplete.vim| (vimscript #4911):
   Completes entire lines with looser matching that the built-in
   |i_CTRL-X_CTRL-L|.
@@ -65,6 +67,8 @@ The following custom completions use this plugin:
   Insert mode completion for branches in the current search pattern.
 - |PatternComplete.vim| (vimscript #4248):
   Completes matches of queried {pattern} or last search pattern.
+  - |MarkComplete.vim| (vimscript #0000):
+    Comples matches of mark.vim (vimscript #2666) patterns.
 - |PrevInsertComplete.vim| (vimscript #4185):
   Recall and insert mode completion for previously inserted text.
 - |QuoteComplete.vim| (vimscript #0000):
@@ -81,6 +85,8 @@ The following custom completions use this plugin:
   Completes keywords from a prefix-nonkeyword-suffix base.
 - |WORDComplete.vim| (vimscript #5613):
   Completes an entire sequence of non-blank characters.
+- |html_TagComplete.vim| (vimscript #0000):
+  Completion of inner / outer tag contents.
 
 RELATED WORKS								     *
 
@@ -378,7 +384,7 @@ First published version.
 Started development.
 
 ==============================================================================
-Copyright: (C) 2008-2021 Ingo Karkat
+Copyright: (C) 2008-2022 Ingo Karkat
 The VIM LICENSE applies to this plugin; see |copyright|.
 
 Maintainer:	Ingo Karkat <ingo@karkat.de>
