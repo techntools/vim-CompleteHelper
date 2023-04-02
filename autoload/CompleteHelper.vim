@@ -20,7 +20,7 @@ if ! exists('g:CompleteHelper_IsDefaultToBackwardSearch')
     let g:CompleteHelper_IsDefaultToBackwardSearch = 1
 endif
 
-function! CompleteHelper#FindMatches( matches, pattern, options, matchTemplate={}, isInCompletionWindow=1 )
+function! CompleteHelper#FindMatches( matches, pattern, options, matchTemplate={} )
 "*******************************************************************************
 "* PURPOSE:
 "   Find matches for a:pattern according to a:options and store them in
@@ -88,7 +88,7 @@ function! CompleteHelper#FindMatches( matches, pattern, options, matchTemplate={
 	endif
 
 	let l:matchEndPos = searchpos( a:pattern, 'cen' )
-	if a:isInCompletionWindow && ingo#pos#IsInside(l:cursor, l:matchPos, l:matchEndPos)
+	if ingo#pos#IsInside(l:cursor, l:matchPos, l:matchEndPos)
 	    " Do not include a match around the cursor position; this would
 	    " either just return the completion base, which Vim would not
 	    " offer anyway, or the completion base and following text, which
