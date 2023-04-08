@@ -11,11 +11,10 @@
 let s:save_cpo = &cpo
 set cpo&vim
 
-function! CompleteHelper#FindMatches( matches, pattern, options )
+function! CompleteHelper#FindMatches( matches, pattern )
 "*******************************************************************************
 "* PURPOSE:
-"   Find matches for a:pattern according to a:options and store them in
-"   a:matches.
+"   Find matches for a:pattern and store them in a:matches.
 "* ASSUMPTIONS / PRECONDITIONS:
 "   none
 "* EFFECTS / POSTCONDITIONS:
@@ -41,11 +40,6 @@ function! CompleteHelper#FindMatches( matches, pattern, options )
 "		Note: An empty pattern does not match at all, so take care of
 "		passing a sensible default! '\V' will match every single
 "		character individually; probably not what you want.
-"		Note: for a:options.complete = 'b', matching is limited to
-"		within single lines.
-"   a:options	Dictionary with match configuration:
-"   a:options.backward_search	Flag whether to search backwards from the cursor
-"				position.
 "* RETURN VALUES:
 "   a:matches
 "*******************************************************************************
