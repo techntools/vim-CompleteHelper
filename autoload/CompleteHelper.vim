@@ -65,7 +65,7 @@ function! CompleteHelper#FindMatches( matches, pattern, options )
 	endif
 
 	let l:matchEndPos = searchpos( a:pattern, 'cen' )
-	if ! ingo#pos#IsInside(l:cursor, l:matchPos, l:matchEndPos)
+	if l:cursor[0] < l:matchPos[0] || l:cursor[0] > l:matchEndPos[0] || l:cursor[0] == l:matchPos[0] && l:cursor[1] < l:matchPos[1] || l:cursor[0] == l:matchEndPos[0] && l:cursor[1] > l:matchEndPos[1]
 	    " Do not include a match around the cursor position; this would
 	    " either just return the completion base, which Vim would not
 	    " offer anyway, or the completion base and following text, which
